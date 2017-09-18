@@ -15,8 +15,14 @@ export default StyleSheet.create({
     borderColor: '#9ed3c7'
   },
 
+  planeStyles: {
+    position: 'absolute',
+    top: 0
+  },
+
   line: {
     position: 'absolute',
+    width: sizes.width - 60,
     top: 17,
     borderWidth: 1,
     borderColor: '#eeeeee'
