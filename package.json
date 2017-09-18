@@ -1,9 +1,23 @@
 {
   "name": "react-native-air-progress-bar",
+  "keywords": [
+    "progress-bar",
+    "react-component",
+    "react-native",
+    "ios"
+  ],
+  "tags": [
+    "progress-bar",
+    "react-component",
+    "react-native",
+    "ios"
+  ],
+  "description": "Customizable and animated progress-bar component for React Native",
+  "main": "index.js",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start": "react-native start",
     "test": "jest"
   },
   "dependencies": {
@@ -11,6 +25,10 @@
     "react": "16.0.0-alpha.12",
     "react-native": "0.47.2",
     "react-native-vector-icons": "^4.3.0"
+  },
+  "peerDependencies": {
+    "react": ">=15.3.1",
+    "react-native": ">=0.25.0"
   },
   "devDependencies": {
     "babel-jest": "20.0.3",
@@ -26,5 +44,14 @@
   },
   "pre-commit": [
     "test"
-  ]
+  ],
+  "author": "Kirill Stepkin <kirillstyopkin@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kis/react-native-air-progress-bar"
+  },
+  "bugs": {
+    "url": "https://github.com/kis/react-native-air-progress-bar/issues"
+  }
 }

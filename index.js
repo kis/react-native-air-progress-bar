@@ -1,13 +1,12 @@
-import React from 'react';
-import { Animated, View } from 'react-native';
+import { Component } from 'react';
+import { Animated, View, StyleSheet, Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Ionicons';
-import styles from './styles';
-import sizes from '../../constants/Sizes';
 
-const barMargin = 30;
+const { WIDTH, HEIGHT } = Dimensions.get('window');
+const BAR_MARGIN = 30;
 
-class ProgressBar extends React.Component {
+export default class ProgressBar extends Component {
   static propTypes = {
     progress: PropTypes.number,
     additionalStyles: PropTypes.oneOfType([
@@ -18,7 +17,7 @@ class ProgressBar extends React.Component {
 
   state = {
     activeSegmentAnim: new Animated.Value(0),
-    planeLeftAnim: new Animated.Value(0)
+    planeAnim: new Animated.Value(0)
   }
 
   componentDidMount() {
@@ -30,8 +29,8 @@ class ProgressBar extends React.Component {
   }
 
   animate(progress) {
-    const { activeSegmentAnim, planeLeftAnim } = this.state;
-    const ratio = (sizes.width - (barMargin * 2)) / 110;
+    const { activeSegmentAnim, planeAnim } = this.state;
+    const ratio = (WIDTH - (BAR_MARGIN * 2)) / 110;
     const activeSegmentWidth = ratio * progress;
 
     Animated.parallel([
@@ -39,7 +38,7 @@ class ProgressBar extends React.Component {
         toValue: activeSegmentWidth,
         duration: 1000
       }),
-      Animated.timing(planeLeftAnim, {
+      Animated.timing(planeAnim, {
         toValue: activeSegmentWidth,
         duration: 1000
       })
@@ -48,7 +47,7 @@ class ProgressBar extends React.Component {
 
   render() {
     const { progress, additionalStyles } = this.props;
-    const { activeSegmentAnim, planeLeftAnim } = this.state;
+    const { activeSegmentAnim, planeAnim } = this.state;
 
     const lineActive = {
       position: 'absolute',
@@ -66,9 +65,9 @@ class ProgressBar extends React.Component {
 
     return (
       <View style={[styles.bar, {
-        marginLeft: barMargin,
-        marginRight: barMargin,
-        width: sizes.width
+        marginLeft: BAR_MARGIN,
+        marginRight: BAR_MARGIN,
+        width: WIDTH
       }, additionalStyles]}>
 
         <Animated.View style={{
@@ -78,7 +77,7 @@ class ProgressBar extends React.Component {
 
         <Animated.View style={{
           ...planeStyles,
-          left: planeLeftAnim
+          left: planeAnim
         }}>
           <Icon name='ios-plane-outline' size={35} color="#dbdbdb" />
         </Animated.View>
@@ -90,4 +89,29 @@ class ProgressBar extends React.Component {
   }
 }
 
-export default ProgressBar;
+const styles = StyleSheet.create({
+  bar: {
+    marginTop: 20,
+    height: 35
+  },
+
+  lineActive: {
+    position: 'absolute',
+    top: 17,
+    borderWidth: 1,
+    borderColor: '#9ed3c7'
+  },
+
+  planeStyles: {
+    position: 'absolute',
+    top: 0
+  },
+
+  line: {
+    position: 'absolute',
+    width: WIDTH - 60,
+    top: 17,
+    borderWidth: 1,
+    borderColor: '#eeeeee'
+  }
+});
