@@ -18,7 +18,7 @@ class AirProgressBar extends React.Component {
     const { width, height } = Dimensions.get('window');
 
     const barMargin = 30;
-    const ratio = (width - (barMargin * 2)) / 11;
+    const ratio = (width - (barMargin * 2)) / 110;
     const activeSegmentWidth = ratio * progress;
     const nonActiveLeft = activeSegmentWidth + barMargin;
     const nonActiveWidth = width - nonActiveLeft - (barMargin * 2);
