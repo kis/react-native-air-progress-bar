@@ -6,6 +6,33 @@ import Icon from 'react-native-vector-icons/Ionicons';
 const { WIDTH, HEIGHT } = Dimensions.get('window');
 const BAR_MARGIN = 30;
 
+const styles = StyleSheet.create({
+  bar: {
+    marginTop: 20,
+    height: 35
+  },
+
+  lineActive: {
+    position: 'absolute',
+    top: 17,
+    borderWidth: 1,
+    borderColor: '#9ed3c7'
+  },
+
+  planeStyles: {
+    position: 'absolute',
+    top: 0
+  },
+
+  line: {
+    position: 'absolute',
+    width: WIDTH - 60,
+    top: 17,
+    borderWidth: 1,
+    borderColor: '#eeeeee'
+  }
+});
+
 export default class ProgressBar extends Component {
   static propTypes = {
     progress: PropTypes.number,
@@ -88,30 +115,3 @@ export default class ProgressBar extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  bar: {
-    marginTop: 20,
-    height: 35
-  },
-
-  lineActive: {
-    position: 'absolute',
-    top: 17,
-    borderWidth: 1,
-    borderColor: '#9ed3c7'
-  },
-
-  planeStyles: {
-    position: 'absolute',
-    top: 0
-  },
-
-  line: {
-    position: 'absolute',
-    width: WIDTH - 60,
-    top: 17,
-    borderWidth: 1,
-    borderColor: '#eeeeee'
-  }
-});
