@@ -14,7 +14,7 @@
   ],
   "description": "Customizable and animated progress-bar component for React Native",
   "main": "index.js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
     "start": "react-native start",
     "test": "jest"
