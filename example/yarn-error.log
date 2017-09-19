@@ -19,7 +19,7 @@ npm manifest:
     "version": "0.1.0",
     "private": true,
     "devDependencies": {
-      "react-native-air-progress-bar": "0.0.1",
+      "react-native-air-progress-bar": "0.0.2",
       "react-native-scripts": "1.3.1",
       "jest-expo": "~20.0.0",
       "react-test-renderer": "16.0.0-alpha.12"
@@ -5995,4 +5995,4 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/yesno/-/yesno-0.0.1.tgz#ffbc04ff3d6f99dad24f7463134e9b92ae41bef6"
 
 Trace: 
-  Error: ENOENT: no such file or directory, open '/Users/kirillstyopkin/proj/react-native-air-progress-bar/example/node_modules/@expo/bunyan/package.json'
+  Error: EACCES: permission denied, mkdir '/Users/kirillstyopkin/proj/react-native-air-progress-bar/example/node_modules/babel-runtime/node_modules/regenerator-runtime'

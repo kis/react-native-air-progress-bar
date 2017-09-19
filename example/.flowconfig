@@ -14,22 +14,6 @@
 .*/Libraries/react-native/React.js
 .*/Libraries/react-native/ReactNative.js
 
-; Additional create-react-native-app ignores
-
-; Ignore duplicate module providers
-.*/node_modules/fbemitter/lib/*
-
-; Ignore misbehaving dev-dependencies
-.*/node_modules/xdl/build/*
-.*/node_modules/reqwest/tests/*
-
-; Ignore missing expo-sdk dependencies (temporarily)
-; https://github.com/expo/expo/issues/162
-.*/node_modules/expo/src/*
-
-; Ignore react-native-fbads dependency of the expo sdk
-.*/node_modules/react-native-fbads/*
-
 [include]
 
 [libs]
@@ -38,11 +22,9 @@ node_modules/react-native/flow
 flow/
 
 [options]
-module.system=haste
-
 emoji=true
 
-experimental.strict_type_args=true
+module.system=haste
 
 munge_underscores=true
 
