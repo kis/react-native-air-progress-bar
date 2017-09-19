@@ -15,7 +15,6 @@
   "description": "Customizable and animated progress-bar component for React Native",
   "main": "index.js",
   "version": "0.0.1",
-  "private": true,
   "scripts": {
     "start": "react-native start",
     "test": "jest"
@@ -42,9 +41,6 @@
   "jest": {
     "preset": "react-native"
   },
-  "pre-commit": [
-    "test"
-  ],
   "author": "Kirill Stepkin <kirillstyopkin@gmail.com>",
   "license": "MIT",
   "repository": {
