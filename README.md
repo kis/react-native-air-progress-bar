@@ -1,8 +1,8 @@
+<p align="center"><img src ="https://raw.githubusercontent.com/kis/react-native-air-progress-bar/master/plane.jpg" /></p>
+
 <h1 align='center'>React Native Air Progress Bar</h1>
 
 <p align='center'>Pretty customizable and animated progress-bar component for React Native.</p>
-
-![alt text](https://raw.githubusercontent.com/kis/react-native-air-progress-bar/master/plane.jpg)
 
 The source for this module is in the [main repo](https://github.com/kis/react-native-air-progress-bar).
 
