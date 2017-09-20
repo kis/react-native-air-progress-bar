@@ -4,6 +4,13 @@
 
 <p align='center'>Pretty customizable and animated progress-bar component for React Native.</p>
 
+<p align='center'>
+	<a href='https://www.npmjs.com/package/react-native-air-progress-bar'><img src="https://img.shields.io/npm/v/react-native-air-progress-bar.svg?style=flat-square" alt=""></a>
+	<a href='https://www.npmjs.com/package/react-native-air-progress-bar'><img src='https://img.shields.io/npm/dm/react-native-air-progress-bar.svg?style=flat-square' /></a>
+	<a href='https://www.npmjs.com/package/react-native-air-progress-bar'><img src='https://img.shields.io/npm/dt/react-native-air-progress-bar.svg?style=flat-square' /></a>
+	<a href='https://github.com/kis/react-native-air-progress-bar'><img src='https://img.shields.io/travis/kis/react-native-air-progress-bar/master.svg?style=flat-square' /></a>
+</p>
+
 <br/>
 
 <p>This is react-native progress-bar component, which could be useful when you need to
