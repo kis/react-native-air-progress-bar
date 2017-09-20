@@ -4,9 +4,11 @@
 
 <p align='center'>Pretty customizable and animated progress-bar component for React Native.</p>
 
-The source for this module is in the [main repo](https://github.com/kis/react-native-air-progress-bar).
+<br/>
 
-![alt text](https://raw.githubusercontent.com/kis/react-native-air-progress-bar/master/anim.gif)
+<p align="center">The source for this module is in the [main repo](https://github.com/kis/react-native-air-progress-bar).</p>
+
+<p align="center"><img src ="https://raw.githubusercontent.com/kis/react-native-air-progress-bar/master/anim.gif" /></p>
 
 <h3 align='center'>Install</h3>
 
