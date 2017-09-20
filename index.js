@@ -1,27 +1,16 @@
 import React, { Component } from 'react';
-import { Animated, View, StyleSheet, Dimensions } from 'react-native';
+import { Animated, View, Text, StyleSheet, Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const { WIDTH, HEIGHT } = Dimensions.get('window');
+const { width:WIDTH, height:HEIGHT } = Dimensions.get('window');
 const BAR_MARGIN = 30;
+const RATIO = (WIDTH - (BAR_MARGIN * 2)) / 110;
 
 const styles = StyleSheet.create({
   bar: {
-    marginTop: 20,
-    height: 35
-  },
-
-  lineActive: {
-    position: 'absolute',
-    top: 17,
-    borderWidth: 1,
-    borderColor: '#9ed3c7'
-  },
-
-  planeStyles: {
-    position: 'absolute',
-    top: 0
+    alignItems: 'center',
+    marginTop: 20
   },
 
   line: {
@@ -29,7 +18,8 @@ const styles = StyleSheet.create({
     width: WIDTH - 60,
     top: 17,
     borderWidth: 1,
-    borderColor: '#eeeeee'
+    borderColor: '#eeeeee',
+    alignSelf: 'flex-end',
   }
 });
 
@@ -43,8 +33,8 @@ export default class ProgressBar extends Component {
   }
 
   state = {
-    activeSegmentAnim: new Animated.Value(0),
-    planeAnim: new Animated.Value(0)
+    activeSegmentAnim: new Animated.Value(this.props.initialProgress || 0),
+    planeAnim: new Animated.Value(this.props.initialProgress || 0)
   }
 
   componentDidMount() {
@@ -57,8 +47,7 @@ export default class ProgressBar extends Component {
 
   animate(progress) {
     const { activeSegmentAnim, planeAnim } = this.state;
-    const ratio = (WIDTH - (BAR_MARGIN * 2)) / 110;
-    const activeSegmentWidth = ratio * progress;
+    const activeSegmentWidth = RATIO * progress;
 
     Animated.parallel([
       Animated.timing(activeSegmentAnim, {
@@ -81,6 +70,7 @@ export default class ProgressBar extends Component {
       top: 17,
       borderWidth: 1,
       borderColor: '#9ed3c7',
+      alignSelf: 'flex-start',
       transform: [{'translate':[0,0,1]}]
     };
 

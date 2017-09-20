@@ -10,7 +10,9 @@ export default class App extends React.Component {
         <Text>Changes you make will automatically reload.</Text>
         <Text>Shake your phone to open the developer menu.</Text>
 
-        <ProgressBar progress={25} />
+        <View style={{ alignItems: 'center', }}>
+          <ProgressBar progress={50} initialProgress={25} />
+        </View>
       </View>
     );
   }
@@ -22,5 +24,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }
 });

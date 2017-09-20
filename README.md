@@ -6,6 +6,8 @@
 
 The source for this module is in the [main repo](https://github.com/kis/react-native-air-progress-bar).
 
+![alt text](https://raw.githubusercontent.com/kis/react-native-air-progress-bar/master/anim.gif)
+
 <h3 align='center'>Install</h3>
 
 ```
