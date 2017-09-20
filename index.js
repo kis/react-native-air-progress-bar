@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
 export default class ProgressBar extends Component {
   static propTypes = {
     progress: PropTypes.number,
+    initialProgress: PropTypes.number,
     additionalStyles: PropTypes.oneOfType([
       PropTypes.object,
       PropTypes.number
