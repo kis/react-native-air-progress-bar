@@ -15,8 +15,6 @@ is in search for contributors.</p>
 
 </br>
 
-![alt text](https://raw.githubusercontent.com/kis/react-native-air-progress-bar/master/plane.jpg)
-
 <p align="center">The source for this module is in the <a href="https://github.com/kis/react-native-air-progress-bar">main repo</a>.</p>
 
 <p align="center"><img src ="https://raw.githubusercontent.com/kis/react-native-air-progress-bar/master/anim.gif" /></p>
