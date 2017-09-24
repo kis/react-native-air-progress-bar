@@ -13,8 +13,8 @@
 
 <br/>
 
-<p>We often need to customize our mobile application according to our brand style needs. The easiest solution is to grab some UI kit, make some fast customizations, add custom styling etc. But some components is hard for customizing. I mean progress-bars, you know. So this is react-native progress-bar component, which could be useful when you need to customize default progress-bar with different icons of current progress. This feature could be really killer in you mobile application brand style. You could use icons from <a href="https://github.com/oblador/react-native-vector-icons">react-native-vector-icons</a> repo or even your own. Currently you have plane icon by default. Also cool thing is that you have animation from initial progress to the final progress value. Each time you update props, you will see the animation of progress-bar. The project
-is in search for contributors.</p>
+<p>We often need to customize our mobile application according to our brand style needs. The easiest solution is to grab some UI kit, make some fast customizations, add custom styling etc. But some components is hard for customizing. I mean progress-bars, you know. So this is react-native progress-bar component, which could be useful when you need to customize default progress-bar with different icons of current progress.</p> 
+<p>This feature could be really killer in you mobile application brand style. You could use icons from <a href="https://github.com/oblador/react-native-vector-icons">react-native-vector-icons</a> repo or even your own. Currently you have plane icon by default. Also cool thing is that you have animation from initial progress to the final progress value. Project uses React Nativ Animated API. Each time you update props, you will see the animation of progress-bar. The project is in search for contributors.</p>
 
 </br>
 
