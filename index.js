@@ -1,108 +1,101 @@
-import React, { Component } from 'react';
-import { Animated, View, Text, StyleSheet, Dimensions } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { Animated, View, StyleSheet, Dimensions, ViewPropTypes } from 'react-native';
 import PropTypes from 'prop-types';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const { width:WIDTH, height:HEIGHT } = Dimensions.get('window');
-const BAR_MARGIN = 30;
-const RATIO = (WIDTH - (BAR_MARGIN * 2)) / 110;
+const { width: WIDTH } = Dimensions.get('window');
 
-const styles = StyleSheet.create({
-  bar: {
-    alignItems: 'center',
-    marginTop: 20
-  },
+const ProgressBar = ({
+  barWidth = '100%',
+  barHeight = 5,
+  progress,
+  initialProgress = 0,
+  activeBarColor = '#9ed3c7',
+  inactiveBarColor = '#eeeeee',
+  activeBarStyle,
+  inactiveBarStyle,
+  iconName,
+  iconSize = 35,
+  iconColor = '#dbdbdb',
+  hideIcon = false,
+}) => {
+  const activeSegmentAnim = useRef(new Animated.Value(initialProgress)).current;
+  const planeAnim = useRef(new Animated.Value(initialProgress)).current;
 
-  line: {
-    position: 'absolute',
-    width: WIDTH - 60,
-    top: 17,
-    borderWidth: 1,
-    borderColor: '#eeeeee',
-    alignSelf: 'flex-end',
-  }
-});
+  useEffect(() => {
+    animate(progress);
+  }, [progress, barWidth]);
 
-export default class ProgressBar extends Component {
-  static propTypes = {
-    progress: PropTypes.number,
-    initialProgress: PropTypes.number,
-    additionalStyles: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.number
-    ])
-  }
-
-  state = {
-    activeSegmentAnim: new Animated.Value(this.props.initialProgress || 0),
-    planeAnim: new Animated.Value(this.props.initialProgress || 0)
-  }
-
-  componentDidMount() {
-    this.animate(this.props.progress);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.animate(nextProps.progress);
-  }
-
-  animate(progress) {
-    const { activeSegmentAnim, planeAnim } = this.state;
-    const activeSegmentWidth = RATIO * progress;
+  const animate = (progress) => {
+    const convertedWidth = WIDTH * (parseFloat(barWidth) / 100);
+    const activeSegmentWidth = convertedWidth * (progress / 100);
 
     Animated.parallel([
       Animated.timing(activeSegmentAnim, {
         toValue: activeSegmentWidth,
-        duration: 1000
+        duration: 1000,
+        useNativeDriver: false,
       }),
       Animated.timing(planeAnim, {
         toValue: activeSegmentWidth,
-        duration: 1000
-      })
+        duration: 1000,
+        useNativeDriver: false,
+      }),
     ]).start();
-  }
+  };
 
-  render() {
-    const { progress, additionalStyles } = this.props;
-    const { activeSegmentAnim, planeAnim } = this.state;
+  const lineActive = {
+    width: progress,
+    height: barHeight,
+    borderWidth: 1,
+    borderColor: activeBarColor,
+    backgroundColor: activeBarColor,
+    alignSelf: 'flex-start',
+    ...activeBarStyle,
+  };
 
-    const lineActive = {
-      position: 'absolute',
-      top: 17,
-      borderWidth: 1,
-      borderColor: '#9ed3c7',
-      alignSelf: 'flex-start',
-      transform: [{'translate':[0,0,1]}]
-    };
+  const lineInactive = {
+    height: barHeight,
+    width: barWidth,
+    borderWidth: 1,
+    borderColor: inactiveBarColor,
+    backgroundColor: inactiveBarColor,
+    alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    ...inactiveBarStyle,
+  };
 
-    const planeStyles = {
-      position: 'absolute',
-      top: 0,
-      transform: [{'translate':[0,0,1]}]
-    };
+  const planeStyles = { position: 'absolute' };
 
-    return (
-      <View style={[styles.bar, {
-        marginLeft: BAR_MARGIN,
-        marginRight: BAR_MARGIN,
-        width: WIDTH
-      }, additionalStyles]}>
-
-        <Animated.View style={{
-          ...lineActive,
-          width: activeSegmentAnim
-        }}></Animated.View>
-
-        <Animated.View style={{
-          ...planeStyles,
-          left: planeAnim
-        }}>
-          <Icon name='ios-plane-outline' size={35} color="#dbdbdb" />
+  return (
+    <View style={lineInactive} >
+      <Animated.View style={[styles.bar, lineActive, { width: activeSegmentAnim }]} />
+      {!hideIcon && (
+        <Animated.View style={[styles.iconContainer, planeStyles, { left: planeAnim }]}>
+          {iconName ?? <Ionicons name={'airplane'} size={iconSize} color={iconColor} />}
         </Animated.View>
+      )}
+    </View>
+  );
+};
 
-        <View style={styles.line}></View>
+ProgressBar.propTypes = {
+  progress: PropTypes.number,
+  initialProgress: PropTypes.number,
+  barWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  barHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  activeBarColor: PropTypes.string,
+  inactiveBarColor: PropTypes.string,
+  activeBarStyle: ViewPropTypes.style,
+  inactiveBarStyle: ViewPropTypes.style,
+  iconName: PropTypes.element,
+  iconSize: PropTypes.number,
+  iconColor: PropTypes.string,
+  hideIcon: PropTypes.bool,
+};
+export default ProgressBar;
 
-      </View>
-    );
-  }
-}
+const styles = StyleSheet.create({
+  bar: { height: '100%', width: '100%' },
+});
